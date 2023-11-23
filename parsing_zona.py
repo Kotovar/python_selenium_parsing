@@ -40,7 +40,6 @@ headers = {"Authorization": f"Bearer {token2}"}
 response = requests.get(url_geoip, headers=headers)
 data = response.json() 
 time_zone = data['location']['time_zone']
-
 conn.close()
 
 # Третий сайт
@@ -61,7 +60,7 @@ for td in td_elements:
 
 with open("timezones.txt", "w", encoding="utf-8") as f:
     for timezone, regions in data.items():
-        if timezone == "Asia/Krasnoyarsk":
+        if timezone == time_zone:
             f.write(timezone + "\n")
             for region in regions:
                 f.write(region + "\n")
